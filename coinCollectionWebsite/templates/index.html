@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} printer website {%endblock %}</title>
+    <link href="/static/frog.css" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <ul>`
+        <li><a href="/">HOME</a></li>
+        {% if current_user.is_authenticated %}
+            <li><a href="/leaderboard">LEADERBOARD</a></li>
+            <li><a href="/read">COLLECTION</a></li>
+            <li><a href="/piggybank">CREATE</a></li>
+            <li><a href="/logout">LOGOUT</a></li>
+        {% else %}
+            <li><a href="/login">LOGIN</a></li>
+        {% endif %}
+    </ul>
+  </nav>
+  {% block content %}
+    <h1>Welcome to coinacopia.com!</h1>
+    <!-- fun fact here -->
+  {% endblock %}
+</body>
+</html>

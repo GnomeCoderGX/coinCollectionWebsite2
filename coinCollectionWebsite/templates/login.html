@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+{% block content %}
+  <form method="POST" action="/login">
+    <label for="u">Username</label>
+    <input type="text" id="u" name="username">
+    <br>
+    <label for="p">PASSword</label>
+    <input type="password" id="p" name="password">
+    <br>
+    <input type="submit" value="Login">
+  </form>
+
+  <p>{{message}}</p>
+{% endblock %}
+

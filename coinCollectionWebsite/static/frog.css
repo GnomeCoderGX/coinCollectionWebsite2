@@ -1,0 +1,41 @@
+/*
+tags are called selectors in css
+
+*/
+body{
+    background-color: red;
+    font-family: papyrus;
+}
+
+h1, h2{
+    background-color: black;
+    color: red;
+
+}
+
+nav {
+    background-color: black;
+}
+
+nav ul {
+    padding: 10px;
+    margin: 0px;
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline;
+    padding: 5px;
+}
+
+nav ul li a:link, nav ul li a:visited{
+    color:white;
+}
+
+nav ul li a:hover {
+    color: red;
+}
+
+nav ul li.selected {
+    background-color: silver;
+}
