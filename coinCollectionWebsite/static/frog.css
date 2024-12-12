@@ -3,13 +3,14 @@ tags are called selectors in css
 
 */
 body{
-    background-color: red;
+    background-color: gray;
     font-family: papyrus;
 }
 
 h1, h2{
     background-color: black;
     color: red;
+    text-align: center
 
 }
 

@@ -56,6 +56,7 @@ def add():
         user = User(username=username, password=password, name=name)
         db.session.add(user)
         db.session.commit()
+        login_user(user)
         return redirect("/")
     return render_template("create.html")
 
