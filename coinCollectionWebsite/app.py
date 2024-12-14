@@ -2,7 +2,7 @@ from flask import Flask, request, render_template, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, current_user,login_user, logout_user, login_required
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path="/static")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///coinDatabase.db"
 app.config["SECRET_KEY"] = "marcRubin"
 
@@ -60,11 +60,17 @@ def add():
         return redirect("/")
     return render_template("create.html")
 
+
+
 @app.route("/logout")
 @login_required
 def logout():
     logout_user()
     return render_template("index.html")
+
+@app.route("/funFact")
+def funfact():
+    return render_template("funFact.html")
 
 """
 @app.route("/read")
