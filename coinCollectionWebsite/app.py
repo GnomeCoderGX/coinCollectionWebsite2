@@ -60,7 +60,31 @@ def add():
         return redirect("/")
     return render_template("create.html")
 
+@app.route("/piggybank", methods=['GET', 'POST'])
+@login_required
+def piggybank():
+    print("test")
+    if request.method == 'POST':
+        print("postmode")
+        #data = request.get_json(force=True)
+        data = request.get_json(force=True)
+        print("aaaaa")
+        print(data)
+        condition = data['condish']
+        year = data['yr']
+        denomination = data['denom']
+        username= request.environ.get('username')
+        print(username)
+        user = User.query.filter_by(username=username).first()
+        fk = user.id
+        print(fk)
+        coin = Coin(denomination=denomination, condition=condition, owner_id=fk, year=year)
+        db.session.add(coin)
+        db.session.commit()
+        print("hello")
+        return "yay"
 
+    return render_template("piggybank.html")
 
 @app.route("/logout")
 @login_required
