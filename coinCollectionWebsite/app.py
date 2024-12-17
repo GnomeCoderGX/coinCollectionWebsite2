@@ -75,8 +75,7 @@ def piggybank():
         denomination = data['denom']
         username= request.environ.get('username')
         print(username)
-        user = User.query.filter_by(username=username).first()
-        fk = user.id
+        fk = current_user.id
         print(fk)
         coin = Coin(denomination=denomination, condition=condition, owner_id=fk, year=year)
         db.session.add(coin)
@@ -114,4 +113,5 @@ def read():
 with app.app_context():
     db.create_all()
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True, port=8000)
