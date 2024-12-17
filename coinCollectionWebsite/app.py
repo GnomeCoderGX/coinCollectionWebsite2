@@ -21,6 +21,7 @@ class Coin(UserMixin, db.Model):
     denomination = db.Column(db.String(20), nullable=False)
     year = db.Column(db.Integer)
     condition = db.Column(db.String(20))
+    owner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 @login_manager.user_loader
 def load_user(uid):
@@ -95,20 +96,19 @@ def logout():
 def funfact():
     return render_template("funFact.html")
 
-"""
-@app.route("/read")
+@app.route("/collection")
 @login_required
 def read():
-    prints = User.query.all()
-    names = []
+    fk = current_user.id
+    prints = Coin.query.filter_by(owner_id=fk)
+    coins = []
     #id=[]
     for i in prints:
-        names.append(i)
+        coins.append(i)
     #for i in prints:
      #   names.append(i.name)
-    return render_template("read.html", list = names)
+    return render_template("read.html", list = coins)
 
-"""
 
 with app.app_context():
     db.create_all()
