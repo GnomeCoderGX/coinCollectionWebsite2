@@ -109,6 +109,12 @@ def read():
      #   names.append(i.name)
     return render_template("read.html", list = coins)
 
+@app.route("/leaderboard")
+@login_required
+def leaderboard():
+    users = User.query.all().order_by().limit(5)
+
+    return render_template("leaderboard.html", list= top_users)
 
 with app.app_context():
     db.create_all()
